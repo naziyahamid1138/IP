@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Centella Beauty - Product Report</title>
+
+    <style>
+
+        /* ===== Basic Page Design ===== */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f8f1;
+            color: #263d2c;
+        }
+
+        /* ===== Header ===== */
+
+        header {
+            background: linear-gradient(135deg, #315c42, #78a878);
+            color: white;
+            text-align: center;
+            padding: 45px 20px;
+        }
+
+        header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 18px;
+        }
+
+        /* ===== Main Container ===== */
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        .report-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .report-title h2 {
+            font-size: 30px;
+            color: #315c42;
+        }
+
+        .report-title p {
+            margin-top: 8px;
+            color: #66796a;
+        }
+
+        /* ===== Product Grid ===== */
+
+        #productReport {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 25px;
+        }
+
+        /* ===== Product Card ===== */
+
+        .product-card {
+            background: white;
+            border-radius: 18px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #dce9dc;
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .product-icon {
+            width: 65px;
+            height: 65px;
+            background: #e4f1e2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin-bottom: 18px;
+        }
+
+        .product-card h3 {
+            color: #315c42;
+            margin-bottom: 15px;
+            font-size: 21px;
+        }
+
+        .info {
+            margin: 9px 0;
+            color: #536558;
+        }
+
+        .info strong {
+            color: #263d2c;
+        }
+
+        /* ===== Grade ===== */
+
+        .grade {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 7px 15px;
+            border-radius: 20px;
+            background: #dcefdc;
+            color: #28613a;
+            font-weight: bold;
+        }
+
+        /* ===== Status ===== */
+
+        .status {
+            margin-top: 12px;
+            font-weight: bold;
+            color: #6d8c63;
+        }
+
+        /* ===== Price ===== */
+
+        .price {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e1e9e1;
+        }
+
+        .final-price {
+            font-size: 20px;
+            color: #315c42;
+            font-weight: bold;
+        }
+
+        /* ===== Footer ===== */
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 25px;
+            background: #315c42;
+            color: white;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+
+        <h1>🌿 Centella Beauty</h1>
+
+        <p>
+            Natural Care • Real Beauty
+        </p>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <div class="container">
+
+        <div class="report-title">
+
+            <h2>Product Report</h2>
+
+            <p>
+                Discover our skincare products and their ratings
+            </p>
+
+        </div>
+
+
+        <!-- JavaScript will put products here -->
+
+        <div id="productReport"></div>
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Centella Beauty | Natural Care • Real Beauty
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="index.js">
+
+        // =====================================
+        // 1. const
+        // =====================================
+
+        const brandName = "Centella Beauty";
+
+
+        // =====================================
+        // 2. Array of Objects
+        // =====================================
+
+        const products = [
+
+            {
+                name: "Centella Cream",
+                price: 850,
+                rating: 4.8,
+                icon: "🌿"
+            },
+
+            {
+                name: "Centella Serum",
+                price: 1200,
+                rating: 4.5,
+                icon: "💧"
+            },
+
+            {
+                name: "Centella Face Wash",
+                price: 650,
+                rating: 4.2,
+                icon: "🫧"
+            },
+
+            {
+                name: "Centella Sunscreen",
+                price: 1000,
+                rating: 3.8,
+                icon: "☀️"
+            }
+
+        ];
+
+
+        // =====================================
+        // 3. Function
+        // Parameter = rating
+        // Return = Grade
+        // =====================================
+
+        function getGrade(rating) {
+
+            if (rating >= 4.5) {
+
+                return "A+";
+
+            }
+
+            else if (rating >= 4.0) {
+
+                return "A";
+
+            }
+
+            else if (rating >= 3.5) {
+
+                return "B";
+
+            }
+
+            else if (rating >= 3.0) {
+
+                return "C";
+
+            }
+
+            else {
+
+                return "F";
+
+            }
+
+        }
+
+
+        // =====================================
+        // 4. Arrow Function
+        // =====================================
+
+        const getStatus = (rating) => {
+
+            if (rating >= 4.5) {
+
+                return "Excellent";
+
+            }
+
+            else if (rating >= 4.0) {
+
+                return "Very Good";
+
+            }
+
+            else if (rating >= 3.5) {
+
+                return "Good";
+
+            }
+
+            else {
+
+                return "Average";
+
+            }
+
+        };
+
+
+        // =====================================
+        // 5. Arrow Function
+        // Calculate Discount
+        // =====================================
+
+        const calculateDiscount = (price) => {
+
+            return price * 0.10;
+
+        };
+
+
+        // =====================================
+        // 6. Get HTML Element
+        // =====================================
+
+        const report = document.getElementById("productReport");
+
+
+        // =====================================
+        // 7. for...of Loop
+        // =====================================
+
+        for (const product of products) {
+
+
+            // Object properties
+
+            const name = product.name;
+
+            const price = product.price;
+
+            const rating = product.rating;
+
+            const icon = product.icon;
+
+
+            // Function call
+
+            const grade = getGrade(rating);
+
+
+            // Arrow function call
+
+            const status = getStatus(rating);
+
+
+            // Calculate discount
+
+            const discount = calculateDiscount(price);
+
+
+            // Calculate final price
+
+            const finalPrice = price - discount;
+
+
+            // =====================================
+            // 8. Template Literal
+            // =====================================
+
+            report.innerHTML += `
+
+                <div class="product-card">
+
+                    <div class="product-icon">
+                        ${icon}
+                    </div>
+
+                    <h3>
+                        ${name}
+                    </h3>
+
+                    <div class="info">
+                        <strong>Brand:</strong>
+                        ${brandName}
+                    </div>
+
+                    <div class="info">
+                        <strong>Original Price:</strong>
+                        ${price} BDT
+                    </div>
+
+                    <div class="info">
+                        <strong>Rating:</strong>
+                        ⭐ ${rating}
+                    </div>
+
+                    <span class="grade">
+                        Grade: ${grade}
+                    </span>
+
+                    <div class="status">
+                        ${status}
+                    </div>
+
+                    <div class="price">
+
+                        <div class="info">
+                            <strong>Discount:</strong>
+                            ${discount} BDT
+                        </div>
+
+                        <div class="final-price">
+                            Final Price:
+                            ${finalPrice} BDT
+                        </div>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+
+    </script>
+
+</body>
+
+</html>
