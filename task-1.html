@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Centella Beauty - To Do List</title>
+
+
+    <style>
+
+        /* =========================
+           BASIC CSS
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef7ee;
+            color: #294936;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background: linear-gradient(
+                135deg,
+                #315c42,
+                #79a878
+            );
+
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        header h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 17px;
+        }
+
+
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
+        .container {
+            width: 90%;
+            max-width: 650px;
+            margin: 40px auto;
+        }
+
+
+        /* =========================
+           TODO BOX
+        ========================= */
+
+        .todo-box {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .todo-box h2 {
+            text-align: center;
+            color: #315c42;
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================
+           INPUT AREA
+        ========================= */
+
+        .input-area {
+            display: flex;
+            gap: 10px;
+        }
+
+        #taskInput {
+            flex: 1;
+
+            padding: 13px;
+
+            border: 2px solid #c9ddca;
+            border-radius: 8px;
+
+            font-size: 16px;
+
+            outline: none;
+        }
+
+        #taskInput:focus {
+            border-color: #6d9b6d;
+        }
+
+
+        /* =========================
+           ADD BUTTON
+        ========================= */
+
+        #addButton {
+            padding: 13px 20px;
+
+            border: none;
+            border-radius: 8px;
+
+            background: #315c42;
+            color: white;
+
+            cursor: pointer;
+
+            font-size: 15px;
+        }
+
+        #addButton:hover {
+            background: #23452f;
+        }
+
+
+        /* =========================
+           TASK LIST
+        ========================= */
+
+        #taskList {
+            list-style: none;
+            margin-top: 25px;
+        }
+
+
+        /* =========================
+           TASK
+        ========================= */
+
+        .task {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            background: #f3f8f1;
+
+            padding: 14px;
+
+            margin-bottom: 12px;
+
+            border-radius: 10px;
+
+            border-left: 5px solid #79a878;
+        }
+
+
+        /* Task text */
+
+        .task-text {
+            flex: 1;
+            font-size: 16px;
+        }
+
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .task-buttons {
+            display: flex;
+            gap: 7px;
+        }
+
+        .complete-btn,
+        .delete-btn {
+            border: none;
+            padding: 8px 12px;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+        }
+
+        .complete-btn {
+            background: #d9ecd8;
+            color: #315c42;
+        }
+
+        .delete-btn {
+            background: #f4d7d7;
+            color: #a33a3a;
+        }
+
+
+        /* =========================
+           COMPLETED TASK
+           classList ব্যবহার করা হয়েছে
+        ========================= */
+
+        .completed .task-text {
+            text-decoration: line-through;
+            color: #89958b;
+        }
+
+        .completed {
+            opacity: 0.7;
+            border-left-color: #999;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            text-align: center;
+
+            background: #315c42;
+
+            color: white;
+
+            padding: 20px;
+
+            margin-top: 50px;
+        }
+
+
+        /* =========================
+           MOBILE RESPONSIVE
+        ========================= */
+
+        @media (max-width: 500px) {
+
+            .input-area {
+                flex-direction: column;
+            }
+
+            #addButton {
+                width: 100%;
+            }
+
+            .task {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+
+        <h1>🌿 Centella Beauty</h1>
+
+        <p>
+            Natural Care • Real Beauty
+        </p>
+
+    </header>
+
+
+
+    <!-- =========================
+         MAIN
+    ========================= -->
+
+    <div class="container">
+
+        <div class="todo-box">
+
+            <h2>
+                Skincare To-Do List
+            </h2>
+
+
+            <!-- =========================
+                 INPUT AREA
+            ========================= -->
+
+            <div class="input-area">
+
+                <input
+                    type="text"
+                    id="taskInput"
+                    placeholder="Enter your skincare task..."
+                >
+
+                <button id="addButton">
+                    + Add Task
+                </button>
+
+            </div>
+
+
+            <!-- =========================
+                 TASK LIST
+            ========================= -->
+
+            <ul id="taskList">
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Centella Beauty
+        </p>
+
+    </footer>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+
+        // ==========================================
+        // 1. DOM SELECTION
+        // ==========================================
+
+        const taskInput =
+            document.getElementById("taskInput");
+
+        const addButton =
+            document.getElementById("addButton");
+
+        const taskList =
+            document.getElementById("taskList");
+
+
+        // ==========================================
+        // 2. ADD TASK FUNCTION
+        // ==========================================
+
+        function addTask() {
+
+
+            // Get input value
+
+            const taskText =
+                taskInput.value.trim();
+
+
+            // ======================================
+            // Check empty input
+            // ======================================
+
+            if (taskText === "") {
+
+                alert("Please enter a task!");
+
+                return;
+            }
+
+
+            // ======================================
+            // 3. CREATE DOM ELEMENT
+            // ======================================
+
+            const li =
+                document.createElement("li");
+
+
+            // Add class to li
+
+            li.classList.add("task");
+
+
+            // ======================================
+            // Create task text
+            // ======================================
+
+            const span =
+                document.createElement("span");
+
+            span.classList.add("task-text");
+
+            span.textContent = taskText;
+
+
+            // ======================================
+            // Create button container
+            // ======================================
+
+            const buttonContainer =
+                document.createElement("div");
+
+            buttonContainer.classList.add(
+                "task-buttons"
+            );
+
+
+            // ======================================
+            // Create Complete Button
+            // ======================================
+
+            const completeButton =
+                document.createElement("button");
+
+            completeButton.textContent =
+                "✓ Complete";
+
+            completeButton.classList.add(
+                "complete-btn"
+            );
+
+
+            // ======================================
+            // Create Delete Button
+            // ======================================
+
+            const deleteButton =
+                document.createElement("button");
+
+            deleteButton.textContent =
+                "Delete";
+
+            deleteButton.classList.add(
+                "delete-btn"
+            );
+
+
+            // ======================================
+            // Add buttons inside container
+            // ======================================
+
+            buttonContainer.appendChild(
+                completeButton
+            );
+
+            buttonContainer.appendChild(
+                deleteButton
+            );
+
+
+            // ======================================
+            // Add elements inside li
+            // ======================================
+
+            li.appendChild(span);
+
+            li.appendChild(buttonContainer);
+
+
+            // ======================================
+            // Display task
+            // ======================================
+
+            taskList.appendChild(li);
+
+
+            // ======================================
+            // 4. COMPLETE BUTTON EVENT
+            // ======================================
+
+            completeButton.addEventListener(
+                "click",
+                function () {
+
+                    // classList ব্যবহার
+
+                    li.classList.toggle(
+                        "completed"
+                    );
+
+                }
+            );
+
+
+            // ======================================
+            // 5. DELETE BUTTON EVENT
+            // ======================================
+
+            deleteButton.addEventListener(
+                "click",
+                function () {
+
+                    // Remove element
+
+                    li.remove();
+
+                }
+            );
+
+
+            // ======================================
+            // Clear input
+            // ======================================
+
+            taskInput.value = "";
+
+            taskInput.focus();
+
+        }
+
+
+        // ==========================================
+        // 6. ADD BUTTON EVENT
+        // ==========================================
+
+        addButton.addEventListener(
+            "click",
+            addTask
+        );
+
+
+        // ==========================================
+        // 7. ENTER KEY EVENT
+        // ==========================================
+
+        taskInput.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (event.key === "Enter") {
+
+                    addTask();
+
+                }
+
+            }
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>
