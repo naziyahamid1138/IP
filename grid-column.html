@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>column check</title>
+</head>
+<style>
+    *{
+        margin: 0px;
+        padding: 5px;
+        background-color: lightpink;
+        box-sizing: border-box;
+    }
+.gridcontainer{
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 10px;
+   padding: 5px;
+   justify-content: space-evenly; 
+    background-color: lightblue;
+    height:auto;
+   border:5px solid black;
+   
+}
+   .item{
+        background-color: rgb(71, 20, 20);
+        text-align: center;
+        color: white;
+        padding: 30px;
+        border: 2px solid white;
+    }
+    .item1{
+        grid-column: 1/4;
+        background-color: black;
+        color:white;
+        text-align: center;
+        
+    }
+     .item2{ 
+        grid-row: 2/4;
+        background-color: rgb(149, 45, 218);
+        color:black;
+        text-align: center;
+        
+    }
+    .item3{
+        grid-column: 2/4;
+        grid-row: 2/4;
+        background-color: rgb(149, 45, 218);
+        color:black;
+        text-align: center;
+        
+    }
+</style>
+<body>
+    <div class="gridcontainer">
+        <div class="item1"><h2>first</h2></div>
+        <div class="item3">second</div>
+        <div class="item">third</div>
+        <div class="item">fourth</div>
+        <div class="item">fifth</div>
+        <div class="item2">sixth</div>
+        <div class="item1">seventh</div>
+    </div>
+</body>
+</html>

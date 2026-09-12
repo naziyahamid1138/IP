@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grid</title>
+</head>
+<style>
+    *{
+        margin: 0px;
+        padding: 5px;
+        background-color: lightpink;
+        box-sizing: border-box;
+    }
+.gridcontainer{
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 10px;
+   padding: 25px;
+    border:5px solid black;
+    /* justify-content: start; */
+    /* justify-content: end; */
+     /* justify-content: space-around;  */
+    /* justify-content: space-between; */
+    justify-content: space-evenly; 
+    background-color: lightblue;
+    height:auto;
+    
+  }
+    .item{
+        background-color: rgb(71, 20, 20);
+        text-align: center;
+        color: white;
+        padding: 30px;
+        border: 2px solid white;
+    }
+
+</style>
+<body>
+    <div class="gridcontainer">
+
+        
+        <div class="item">first</div>
+        <div class="item">second</div>
+        <div class="item">third</div>
+        <div class="item">fourth</div>
+        <div class="item">fifth</div>
+        <div class="item">sixth</div>
+        <div class="item">seventh</div>
+
+    </div>
+</body>
+</html>
