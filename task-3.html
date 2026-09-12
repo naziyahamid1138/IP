@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Centella Beauty - User Directory</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef7ee;
+            color: #294936;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background: linear-gradient(
+                135deg,
+                #315c42,
+                #79a878
+            );
+
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+
+        header h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+
+        header p {
+            font-size: 17px;
+        }
+
+
+        /* =========================
+           CONTAINER
+        ========================= */
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+
+        .title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+
+        .title h2 {
+            color: #315c42;
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+
+        .title p {
+            color: #718075;
+        }
+
+
+        /* =========================
+           LOADING
+        ========================= */
+
+        #loading {
+            text-align: center;
+            color: #315c42;
+            font-size: 18px;
+            padding: 30px;
+        }
+
+
+        /* =========================
+           ERROR
+        ========================= */
+
+        #error {
+            display: none;
+
+            background: #f8dddd;
+            color: #a33a3a;
+
+            padding: 15px;
+
+            border-radius: 10px;
+
+            text-align: center;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================
+           USER GRID
+        ========================= */
+
+        #userDirectory {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(250px, 1fr));
+
+            gap: 25px;
+        }
+
+
+        /* =========================
+           USER CARD
+        ========================= */
+
+        .user-card {
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 18px;
+
+            border: 1px solid #dce9dc;
+
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, 0.08);
+
+            transition: 0.3s;
+        }
+
+
+        .user-card:hover {
+
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 12px 25px rgba(0, 0, 0, 0.12);
+        }
+
+
+        /* =========================
+           USER ICON
+        ========================= */
+
+        .user-icon {
+
+            width: 65px;
+            height: 65px;
+
+            background: #e2f0e2;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 30px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .user-card h3 {
+
+            color: #315c42;
+
+            margin-bottom: 15px;
+        }
+
+
+        .info {
+
+            margin: 10px 0;
+
+            color: #536558;
+
+            line-height: 1.4;
+        }
+
+
+        .info strong {
+
+            color: #294936;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+
+            background: #315c42;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 20px;
+
+            margin-top: 50px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+
+        <h1>🌿 Centella Beauty</h1>
+
+        <p>
+            Natural Care • Real Beauty
+        </p>
+
+    </header>
+
+
+
+    <!-- =========================
+         MAIN
+    ========================= -->
+
+    <div class="container">
+
+
+        <div class="title">
+
+            <h2>User Directory</h2>
+
+            <p>
+                Meet our Centella Beauty community
+            </p>
+
+        </div>
+
+
+        <!-- Loading Message -->
+
+        <div id="loading">
+
+            Loading users...
+
+        </div>
+
+
+        <!-- Error Message -->
+
+        <div id="error">
+
+            Something went wrong!
+
+        </div>
+
+
+        <!-- User cards will be created here -->
+
+        <div id="userDirectory"></div>
+
+
+    </div>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Centella Beauty
+        </p>
+
+    </footer>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+
+        // =====================================
+        // 1. DOM SELECTION
+        // =====================================
+
+        const userDirectory =
+            document.getElementById("userDirectory");
+
+
+        const loading =
+            document.getElementById("loading");
+
+
+        const errorMessage =
+            document.getElementById("error");
+
+
+
+        // =====================================
+        // 2. API URL
+        // =====================================
+
+        const apiURL =
+            "https://jsonplaceholder.typicode.com/users";
+
+
+
+        // =====================================
+        // 3. fetch()
+        // =====================================
+
+        fetch(apiURL)
+
+
+            // =================================
+            // 4. First Promise
+            // =================================
+
+            .then(function(response) {
+
+                // Check API response
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Failed to fetch users"
+                    );
+
+                }
+
+
+                // Convert response to JSON
+
+                return response.json();
+
+            })
+
+
+            // =================================
+            // 5. Second Promise
+            // =================================
+
+            .then(function(users) {
+
+
+                // Hide loading message
+
+                loading.style.display = "none";
+
+
+                // =================================
+                // 6. Loop through users
+                // =================================
+
+                users.forEach(function(user) {
+
+
+                    // =================================
+                    // 7. Create DOM Element
+                    // =================================
+
+                    const userCard =
+                        document.createElement("div");
+
+
+                    userCard.classList.add(
+                        "user-card"
+                    );
+
+
+                    // =================================
+                    // 8. Dynamic DOM Generation
+                    // =================================
+
+                    userCard.innerHTML = `
+
+                        <div class="user-icon">
+                            👤
+                        </div>
+
+
+                        <h3>
+                            ${user.name}
+                        </h3>
+
+
+                        <div class="info">
+
+                            <strong>
+                                Username:
+                            </strong>
+
+                            ${user.username}
+
+                        </div>
+
+
+                        <div class="info">
+
+                            <strong>
+                                Email:
+                            </strong>
+
+                            ${user.email}
+
+                        </div>
+
+
+                        <div class="info">
+
+                            <strong>
+                                Phone:
+                            </strong>
+
+                            ${user.phone}
+
+                        </div>
+
+
+                        <div class="info">
+
+                            <strong>
+                                Company:
+                            </strong>
+
+                            ${user.company.name}
+
+                        </div>
+
+                    `;
+
+
+                    // =================================
+                    // 9. Add card to webpage
+                    // =================================
+
+                    userDirectory.appendChild(
+                        userCard
+                    );
+
+                });
+
+            })
+
+
+            // =====================================
+            // 10. Error Handling
+            // =====================================
+
+            .catch(function(error) {
+
+
+                // Hide loading
+
+                loading.style.display = "none";
+
+
+                // Show error
+
+                errorMessage.style.display =
+                    "block";
+
+
+                errorMessage.textContent =
+                    "Error: " + error.message;
+
+            });
+
+
+    </script>
+
+
+</body>
+
+</html>
