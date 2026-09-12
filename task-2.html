@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Centella Beauty - Registration</title>
+
+
+    <style>
+
+        /* =========================
+           BASIC
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef7ee;
+            color: #294936;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background: linear-gradient(
+                135deg,
+                #315c42,
+                #79a878
+            );
+
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        header h1 {
+            font-size: 40px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            font-size: 17px;
+        }
+
+
+        /* =========================
+           FORM CONTAINER
+        ========================= */
+
+        .container {
+            width: 90%;
+            max-width: 550px;
+            margin: 40px auto;
+        }
+
+
+        .form-box {
+            background: white;
+            padding: 35px;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+
+        .form-box h2 {
+            text-align: center;
+            color: #315c42;
+            margin-bottom: 8px;
+        }
+
+
+        .subtitle {
+            text-align: center;
+            color: #718075;
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================
+           FORM GROUP
+        ========================= */
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+
+            font-weight: bold;
+            color: #315c42;
+        }
+
+
+        .form-group input {
+            width: 100%;
+
+            padding: 12px;
+
+            border: 2px solid #d3e3d3;
+
+            border-radius: 8px;
+
+            font-size: 15px;
+
+            outline: none;
+        }
+
+
+        .form-group input:focus {
+            border-color: #6d9b6d;
+        }
+
+
+        /* =========================
+           ERROR MESSAGE
+        ========================= */
+
+        .error {
+            color: #d04a4a;
+
+            font-size: 13px;
+
+            margin-top: 5px;
+
+            display: none;
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        button {
+            width: 100%;
+
+            padding: 13px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #315c42;
+
+            color: white;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+            margin-top: 10px;
+        }
+
+
+        button:hover {
+            background: #23452f;
+        }
+
+
+        /* =========================
+           SUCCESS MESSAGE
+        ========================= */
+
+        #successMessage {
+            display: none;
+
+            margin-top: 20px;
+
+            padding: 15px;
+
+            background: #dff1df;
+
+            color: #28613a;
+
+            border-radius: 8px;
+
+            text-align: center;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #315c42;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 20px;
+
+            margin-top: 40px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+
+        <h1>🌿 Centella Beauty</h1>
+
+        <p>
+            Natural Care • Real Beauty
+        </p>
+
+    </header>
+
+
+
+    <!-- =========================
+         FORM
+    ========================= -->
+
+    <div class="container">
+
+        <div class="form-box">
+
+            <h2>Create Your Account</h2>
+
+            <p class="subtitle">
+                Join the Centella Beauty family
+            </p>
+
+
+            <form id="registrationForm">
+
+
+                <!-- NAME -->
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your name"
+                    >
+
+                    <p id="nameError"
+                       class="error">
+                        Please enter your name.
+                    </p>
+
+                </div>
+
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <input
+                        type="text"
+                        id="email"
+                        placeholder="Enter your email"
+                    >
+
+                    <p id="emailError"
+                       class="error">
+                        Please enter a valid email.
+                    </p>
+
+                </div>
+
+
+
+                <!-- PASSWORD -->
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                    >
+
+                    <p id="passwordError"
+                       class="error">
+                        Password must be at least 6 characters.
+                    </p>
+
+                </div>
+
+
+
+                <!-- CONFIRM PASSWORD -->
+
+                <div class="form-group">
+
+                    <label for="confirmPassword">
+                        Confirm Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Confirm your password"
+                    >
+
+                    <p id="confirmPasswordError"
+                       class="error">
+                        Passwords do not match.
+                    </p>
+
+                </div>
+
+
+
+                <!-- AGE -->
+
+                <div class="form-group">
+
+                    <label for="age">
+                        Age
+                    </label>
+
+                    <input
+                        type="number"
+                        id="age"
+                        placeholder="Enter your age"
+                    >
+
+                    <p id="ageError"
+                       class="error">
+                        Age must be between 13 and 100.
+                    </p>
+
+                </div>
+
+
+
+                <!-- SUBMIT -->
+
+                <button type="submit">
+
+                    Register
+
+                </button>
+
+
+                <!-- SUCCESS -->
+
+                <div id="successMessage">
+
+                    🎉 Registration successful!
+
+                    <br>
+
+                    Welcome to Centella Beauty.
+
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Centella Beauty
+        </p>
+
+    </footer>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+
+        // =====================================
+        // 1. DOM SELECTION
+        // =====================================
+
+        const form =
+            document.getElementById("registrationForm");
+
+
+        const nameInput =
+            document.getElementById("name");
+
+
+        const emailInput =
+            document.getElementById("email");
+
+
+        const passwordInput =
+            document.getElementById("password");
+
+
+        const confirmPasswordInput =
+            document.getElementById("confirmPassword");
+
+
+        const ageInput =
+            document.getElementById("age");
+
+
+        const successMessage =
+            document.getElementById("successMessage");
+
+
+        // Error elements
+
+        const nameError =
+            document.getElementById("nameError");
+
+
+        const emailError =
+            document.getElementById("emailError");
+
+
+        const passwordError =
+            document.getElementById("passwordError");
+
+
+        const confirmPasswordError =
+            document.getElementById(
+                "confirmPasswordError"
+            );
+
+
+        const ageError =
+            document.getElementById("ageError");
+
+
+
+        // =====================================
+        // 2. SUBMIT EVENT
+        // =====================================
+
+        form.addEventListener(
+            "submit",
+            function(event) {
+
+
+                // =================================
+                // preventDefault()
+                // =================================
+
+                event.preventDefault();
+
+
+                // =================================
+                // Get values
+                // =================================
+
+                const name =
+                    nameInput.value.trim();
+
+
+                const email =
+                    emailInput.value.trim();
+
+
+                const password =
+                    passwordInput.value;
+
+
+                const confirmPassword =
+                    confirmPasswordInput.value;
+
+
+                const age =
+                    Number(ageInput.value);
+
+
+                // =================================
+                // Reset errors
+                // =================================
+
+                nameError.style.display = "none";
+
+                emailError.style.display = "none";
+
+                passwordError.style.display = "none";
+
+                confirmPasswordError.style.display =
+                    "none";
+
+                ageError.style.display = "none";
+
+                successMessage.style.display = "none";
+
+
+                // =================================
+                // Validation variable
+                // =================================
+
+                let valid = true;
+
+
+
+                // =================================
+                // NAME VALIDATION
+                // =================================
+
+                if (name === "") {
+
+                    nameError.style.display = "block";
+
+                    valid = false;
+
+                }
+
+
+
+                // =================================
+                // EMAIL VALIDATION
+                // =================================
+
+                if (
+                    email === "" ||
+                    !email.includes("@")
+                ) {
+
+                    emailError.style.display = "block";
+
+                    valid = false;
+
+                }
+
+
+
+                // =================================
+                // PASSWORD VALIDATION
+                // =================================
+
+                if (password.length < 6) {
+
+                    passwordError.style.display =
+                        "block";
+
+                    valid = false;
+
+                }
+
+
+
+                // =================================
+                // CONFIRM PASSWORD
+                // =================================
+
+                if (
+                    confirmPassword === "" ||
+                    password !== confirmPassword
+                ) {
+
+                    confirmPasswordError.style.display =
+                        "block";
+
+                    valid = false;
+
+                }
+
+
+
+                // =================================
+                // AGE VALIDATION
+                // =================================
+
+                if (
+                    age < 13 ||
+                    age > 100 ||
+                    isNaN(age)
+                ) {
+
+                    ageError.style.display = "block";
+
+                    valid = false;
+
+                }
+
+
+
+                // =================================
+                // SUCCESS
+                // =================================
+
+                if (valid === true) {
+
+                    successMessage.style.display =
+                        "block";
+
+
+                    // Clear form
+
+                    form.reset();
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
